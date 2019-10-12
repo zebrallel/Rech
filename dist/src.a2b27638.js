@@ -29577,7 +29577,115 @@ function _default() {
     fill: 'blue'
   });
 }
-},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/route.js":[function(require,module,exports) {
+},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/assets/bbb.png":[function(require,module,exports) {
+module.exports = "/bbb.0c860639.png";
+},{}],"src/pages/CanvasImg/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _bbb = _interopRequireDefault(require("../../assets/bbb.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var CanvasImg =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CanvasImg, _React$Component);
+
+  function CanvasImg() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, CanvasImg);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CanvasImg)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "onFileChange", function (event) {
+      var selectedFile = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (eve) {
+        var bookImg = new Image();
+        var foregroundImg = new Image();
+        Promise.all([_this.loadImg(foregroundImg, _bbb.default), _this.loadImg(bookImg, eve.target.result)]).then(function () {
+          var context = canvas.getContext('2d');
+          context.drawImage(bookImg, 0, 0, bookImg.width, bookImg.height, 0, 0, bookImg.width, bookImg.height);
+          context.drawImage(foregroundImg, 0, 0, foregroundImg.width, foregroundImg.height, 0, 0, bookImg.width, bookImg.height); // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
+          // handle img data
+        });
+      };
+
+      reader.readAsDataURL(selectedFile);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "loadImg", function (imgElement, src) {
+      return new Promise(function (resolve) {
+        imgElement.src = src;
+
+        imgElement.onload = function (event) {
+          resolve(event);
+        };
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(CanvasImg, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("div", null, React.createElement("div", null, React.createElement("input", {
+        type: "file",
+        onChange: this.onFileChange
+      }), React.createElement("button", null, "upload")), React.createElement("br", null), React.createElement("canvas", {
+        id: "canvas",
+        width: "500",
+        height: "500",
+        style: {
+          border: '#333 solid 1px'
+        }
+      }));
+    }
+  }]);
+
+  return CanvasImg;
+}(React.Component);
+
+exports.default = CanvasImg;
+},{"react":"node_modules/react/index.js","../../assets/bbb.png":"src/assets/bbb.png"}],"src/route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29590,6 +29698,8 @@ var _ProgressBar = _interopRequireDefault(require("./pages/ProgressBar"));
 var _RussellLogin = _interopRequireDefault(require("./pages/RussellLogin"));
 
 var _PentagonDemo = _interopRequireDefault(require("./pages/PentagonDemo"));
+
+var _CanvasImg = _interopRequireDefault(require("./pages/CanvasImg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29605,10 +29715,14 @@ var routes = [{
   title: 'Pentagon Demo',
   component: _PentagonDemo.default,
   path: '/pentagon'
+}, {
+  title: 'Canvas img composite',
+  component: _CanvasImg.default,
+  path: '/canvas-img'
 }];
 var _default = routes;
 exports.default = _default;
-},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./index.css");
@@ -29745,7 +29859,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50293" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51325" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

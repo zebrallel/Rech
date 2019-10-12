@@ -1,0 +1,29 @@
+html, body{
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  user-select: none;
+}
+
+.item{
+  border-bottom: #ccc solid 1px;
+  line-height: 48px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+}
+
+.header{
+  line-height: 48px;
+  box-sizing: border-box;
+  padding-left: 24px;
+  border-bottom: #ccc solid 1px;
+}
+
+.header button{
+  padding: 4px 12px;
+}
+
+.content{
+  padding: 24px;
+}

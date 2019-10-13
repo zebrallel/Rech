@@ -19,13 +19,33 @@ class App extends React.PureComponent {
     this.setState({
       current: route
     })
-    history.pushState(null, '', route.path)
+    history.pushState(
+      {
+        path: route.path
+      },
+      '',
+      route.path
+    )
   }
   onHomeClick = () => {
     this.setState({
       current: null
     })
     history.replaceState(null, '', '/')
+  }
+  onPopState = eve => {
+    if (!eve.state) {
+      this.setState({
+        current: null
+      })
+    } else {
+      this.setState({
+        current: routesConfig.find(config => config.path === eve.state.path)
+      })
+    }
+  }
+  componentDidMount() {
+    window.addEventListener('popstate', this.onPopState, false)
   }
   render() {
     const { current, routes } = this.state

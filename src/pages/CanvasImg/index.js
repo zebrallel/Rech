@@ -1,5 +1,6 @@
 import * as React from 'react'
-import foreground from '../../assets/bbb.png'
+import foreground from '../../assets/bookcover.png'
+import { expandWithLimitation } from './process'
 
 export default class CanvasImg extends React.Component {
   onFileChange = event => {
@@ -11,23 +12,29 @@ export default class CanvasImg extends React.Component {
       const foregroundImg = new Image()
 
       Promise.all([this.loadImg(foregroundImg, foreground), this.loadImg(bookImg, eve.target.result)]).then(() => {
+        const canvas = document.createElement('canvas')
+        document.documentElement.appendChild(canvas)
+        canvas.width = bookImg.width
+        canvas.height = bookImg.height
         const context = canvas.getContext('2d')
 
         context.drawImage(bookImg, 0, 0, bookImg.width, bookImg.height, 0, 0, bookImg.width, bookImg.height)
-        context.drawImage(
+
+        expandWithLimitation(
+          context,
+          {
+            x1: 100,
+            x2: 150,
+            y1: 150,
+            y2: 200
+          },
           foregroundImg,
-          0,
-          0,
-          foregroundImg.width,
-          foregroundImg.height,
-          0,
-          0,
-          bookImg.width,
-          bookImg.height
+          bookImg
         )
 
+        location.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+
         // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
-        // handle img data
       })
     }
 
@@ -49,7 +56,6 @@ export default class CanvasImg extends React.Component {
           <button>upload</button>
         </div>
         <br />
-        <canvas id="canvas" width="500" height="500" style={{ border: '#333 solid 1px' }}></canvas>
       </div>
     )
   }

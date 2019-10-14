@@ -35822,8 +35822,44 @@ function _default() {
     fill: 'blue'
   });
 }
-},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/assets/bbb.png":[function(require,module,exports) {
-module.exports = "/bbb.0c860639.png";
+},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/assets/bookcover.png":[function(require,module,exports) {
+module.exports = "/bookcover.0b40ea89.png";
+},{}],"src/pages/CanvasImg/process.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.expandWithLimitation = expandWithLimitation;
+
+function expandWithLimitation(context, limitation, maskImage, bookCoverImage) {
+  var x1 = limitation.x1,
+      x2 = limitation.x2,
+      y1 = limitation.y1,
+      y2 = limitation.y2;
+  var w1 = maskImage.width;
+  var w2 = bookCoverImage.width;
+  var h1 = maskImage.height;
+  var h2 = bookCoverImage.height; // top left
+
+  context.drawImage(maskImage, 0, 0, x1, y1, 0, 0, x1, y1); // top right
+
+  context.drawImage(maskImage, x2, 0, w1 - x2, y1, w2 - w1 + x2, 0, w1 - x2, y1); // bottom left
+
+  context.drawImage(maskImage, 0, y2, x1, h1 - y2, 0, h2 - h1 + y2, x1, h1 - y2); // bottom right
+
+  context.drawImage(maskImage, x2, y2, w1 - x2, h1 - y2, w2 - w1 + x2, h2 - h1 + y2, w1 - x2, h1 - y2); // top center
+
+  context.drawImage(maskImage, x1, 0, x2 - x1, y1, x1, 0, w2 - w1 + x2 - x1, y1); // left center
+
+  context.drawImage(maskImage, 0, y1, x1, y2 - y1, 0, y1, x1, h2 - h1 + y2 - y1); // right center
+
+  context.drawImage(maskImage, x2, y1, w1 - x2, y2 - y1, w2 - w1 + x2, y1, w1 - x2, h2 - h1 + y2 - y1); // bottom center
+
+  context.drawImage(maskImage, x1, y2, x2 - x1, h1 - y2, x1, h2 - h1 + y2, w2 - w1 + x2 - x1, h1 - y2); // center
+
+  context.drawImage(maskImage, x1, y1, x2 - x1, y2 - y1, x1, y1, w2 - w1 + x2 - x1, h2 - h1 + y2 - y1);
+}
 },{}],"src/pages/CanvasImg/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -35834,7 +35870,9 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
-var _bbb = _interopRequireDefault(require("../../assets/bbb.png"));
+var _bookcover = _interopRequireDefault(require("../../assets/bookcover.png"));
+
+var _process = require("./process");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35887,11 +35925,20 @@ function (_React$Component) {
       reader.onload = function (eve) {
         var bookImg = new Image();
         var foregroundImg = new Image();
-        Promise.all([_this.loadImg(foregroundImg, _bbb.default), _this.loadImg(bookImg, eve.target.result)]).then(function () {
+        Promise.all([_this.loadImg(foregroundImg, _bookcover.default), _this.loadImg(bookImg, eve.target.result)]).then(function () {
+          var canvas = document.createElement('canvas');
+          document.documentElement.appendChild(canvas);
+          canvas.width = bookImg.width;
+          canvas.height = bookImg.height;
           var context = canvas.getContext('2d');
           context.drawImage(bookImg, 0, 0, bookImg.width, bookImg.height, 0, 0, bookImg.width, bookImg.height);
-          context.drawImage(foregroundImg, 0, 0, foregroundImg.width, foregroundImg.height, 0, 0, bookImg.width, bookImg.height); // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
-          // handle img data
+          (0, _process.expandWithLimitation)(context, {
+            x1: 100,
+            x2: 150,
+            y1: 150,
+            y2: 200
+          }, foregroundImg, bookImg);
+          location.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'); // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
         });
       };
 
@@ -35917,14 +35964,7 @@ function (_React$Component) {
       return React.createElement("div", null, React.createElement("div", null, React.createElement("input", {
         type: "file",
         onChange: this.onFileChange
-      }), React.createElement("button", null, "upload")), React.createElement("br", null), React.createElement("canvas", {
-        id: "canvas",
-        width: "500",
-        height: "500",
-        style: {
-          border: '#333 solid 1px'
-        }
-      }));
+      }), React.createElement("button", null, "upload")), React.createElement("br", null));
     }
   }]);
 
@@ -35932,7 +35972,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasImg;
-},{"react":"node_modules/react/index.js","../../assets/bbb.png":"src/assets/bbb.png"}],"src/route.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../assets/bookcover.png":"src/assets/bookcover.png","./process":"src/pages/CanvasImg/process.js"}],"src/route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36129,7 +36169,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50478" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59896" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

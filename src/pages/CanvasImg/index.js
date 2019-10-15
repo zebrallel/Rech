@@ -1,5 +1,5 @@
 import * as React from 'react'
-import foreground from '../../assets/bookcover.png'
+import foreground from '../../assets/cover.png'
 import { expandWithLimitation } from './process'
 
 export default class CanvasImg extends React.Component {
@@ -23,16 +23,14 @@ export default class CanvasImg extends React.Component {
         expandWithLimitation(
           context,
           {
-            x1: 100,
-            x2: 150,
-            y1: 150,
-            y2: 200
+            x1: 185,
+            x2: 195,
+            y1: 134,
+            y2: 144 
           },
           foregroundImg,
           bookImg
         )
-
-        location.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
 
         // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
       })

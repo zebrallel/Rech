@@ -35822,8 +35822,8 @@ function _default() {
     fill: 'blue'
   });
 }
-},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/assets/bookcover.png":[function(require,module,exports) {
-module.exports = "/bookcover.0b40ea89.png";
+},{"../../components/pentagon":"src/components/pentagon.jsx"}],"src/assets/cover.png":[function(require,module,exports) {
+module.exports = "/cover.f06ad130.png";
 },{}],"src/pages/CanvasImg/process.js":[function(require,module,exports) {
 "use strict";
 
@@ -35870,7 +35870,7 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
-var _bookcover = _interopRequireDefault(require("../../assets/bookcover.png"));
+var _cover = _interopRequireDefault(require("../../assets/cover.png"));
 
 var _process = require("./process");
 
@@ -35925,7 +35925,7 @@ function (_React$Component) {
       reader.onload = function (eve) {
         var bookImg = new Image();
         var foregroundImg = new Image();
-        Promise.all([_this.loadImg(foregroundImg, _bookcover.default), _this.loadImg(bookImg, eve.target.result)]).then(function () {
+        Promise.all([_this.loadImg(foregroundImg, _cover.default), _this.loadImg(bookImg, eve.target.result)]).then(function () {
           var canvas = document.createElement('canvas');
           document.documentElement.appendChild(canvas);
           canvas.width = bookImg.width;
@@ -35933,12 +35933,11 @@ function (_React$Component) {
           var context = canvas.getContext('2d');
           context.drawImage(bookImg, 0, 0, bookImg.width, bookImg.height, 0, 0, bookImg.width, bookImg.height);
           (0, _process.expandWithLimitation)(context, {
-            x1: 100,
-            x2: 150,
-            y1: 150,
-            y2: 200
-          }, foregroundImg, bookImg);
-          location.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'); // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
+            x1: 185,
+            x2: 195,
+            y1: 134,
+            y2: 144
+          }, foregroundImg, bookImg); // const imgData = context.getImageData(0, 0, bookImg.width, bookImg.height)
         });
       };
 
@@ -35972,7 +35971,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasImg;
-},{"react":"node_modules/react/index.js","../../assets/bookcover.png":"src/assets/bookcover.png","./process":"src/pages/CanvasImg/process.js"}],"src/route.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../assets/cover.png":"src/assets/cover.png","./process":"src/pages/CanvasImg/process.js"}],"src/route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36169,7 +36168,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59896" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59452" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

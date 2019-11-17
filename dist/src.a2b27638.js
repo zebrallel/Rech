@@ -35971,7 +35971,139 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasImg;
-},{"react":"node_modules/react/index.js","../../assets/cover.png":"src/assets/cover.png","./process":"src/pages/CanvasImg/process.js"}],"src/route.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../assets/cover.png":"src/assets/cover.png","./process":"src/pages/CanvasImg/process.js"}],"src/pages/HMR/goo.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Goo =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Goo, _React$Component);
+
+  function Goo() {
+    var _this;
+
+    _classCallCheck(this, Goo);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Goo).call(this));
+    console.log('goo constructor!');
+    return _this;
+  }
+
+  _createClass(Goo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('Goo did mount!');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      console.log('goo did update');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("h1", null, "this is goo class");
+    }
+  }]);
+
+  return Goo;
+}(React.Component);
+
+var _default = Goo;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/pages/HMR/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Goo = require('./goo').default;
+
+var App =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App() {
+    var _this;
+
+    _classCallCheck(this, App);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+    _this.state = {
+      content: Goo
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: "App"
+      }, _react.default.createElement("h1", null, "Hello CodeSandbox 7"), _react.default.createElement(this.state.content));
+    }
+  }]);
+
+  return App;
+}(_react.default.Component);
+
+var _default = App;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./goo":"src/pages/HMR/goo.jsx"}],"src/route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35986,6 +36118,8 @@ var _RussellLogin = _interopRequireDefault(require("./pages/RussellLogin"));
 var _PentagonDemo = _interopRequireDefault(require("./pages/PentagonDemo"));
 
 var _CanvasImg = _interopRequireDefault(require("./pages/CanvasImg"));
+
+var _HMR = _interopRequireDefault(require("./pages/HMR"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36005,10 +36139,14 @@ var routes = [{
   title: 'Canvas img composite',
   component: _CanvasImg.default,
   path: '/canvas-img'
+}, {
+  title: 'HMR',
+  component: _HMR.default,
+  path: '/hmr'
 }];
 var _default = routes;
 exports.default = _default;
-},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js","./pages/HMR":"src/pages/HMR/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./index.css");
@@ -36168,7 +36306,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59452" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56107" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

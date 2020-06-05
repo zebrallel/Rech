@@ -36103,7 +36103,76 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./goo":"src/pages/HMR/goo.jsx"}],"src/route.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./goo":"src/pages/HMR/goo.jsx"}],"src/pages/Hooks/index.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function HooksPage() {
+  var _useState = (0, _react.useState)({
+    num: 0
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      count = _useState2[0],
+      setCount = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      num = _useState4[0],
+      setNum = _useState4[1];
+
+  (0, _react.useEffect)(function () {
+    console.log("use effect execute, num: ", num);
+  }, [count]);
+
+  function handleAlertClick() {
+    setTimeout(function () {
+      alert("You clicked on: " + count.num);
+    }, 3000);
+  }
+
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "this is hooks page"), _react.default.createElement("div", null, "count: ", count.num, _react.default.createElement("button", {
+    style: {
+      marginLeft: 20
+    },
+    onClick: function onClick() {
+      setCount({
+        num: count.num + 1
+      });
+    }
+  }, "add")), _react.default.createElement("div", null, "num: ", num, _react.default.createElement("button", {
+    style: {
+      marginLeft: 20
+    },
+    onClick: function onClick() {
+      count.num++;
+      setNum(num + 1);
+    }
+  }, "add")), _react.default.createElement("button", {
+    onClick: handleAlertClick
+  }, "show count after 3s"));
+}
+
+var _default = HooksPage;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36120,6 +36189,8 @@ var _PentagonDemo = _interopRequireDefault(require("./pages/PentagonDemo"));
 var _CanvasImg = _interopRequireDefault(require("./pages/CanvasImg"));
 
 var _HMR = _interopRequireDefault(require("./pages/HMR"));
+
+var _Hooks = _interopRequireDefault(require("./pages/Hooks"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36143,10 +36214,14 @@ var routes = [{
   title: 'HMR',
   component: _HMR.default,
   path: '/hmr'
+}, {
+  title: 'Hooks',
+  component: _Hooks.default,
+  path: '/hooks'
 }];
 var _default = routes;
 exports.default = _default;
-},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js","./pages/HMR":"src/pages/HMR/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js","./pages/HMR":"src/pages/HMR/index.js","./pages/Hooks":"src/pages/Hooks/index.jsx"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./index.css");
@@ -36306,7 +36381,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50469" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

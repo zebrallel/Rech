@@ -3,6 +3,7 @@ import RussellLogin from './pages/RussellLogin'
 import PentagonDemo from './pages/PentagonDemo'
 import CanvasImg from './pages/CanvasImg'
 import HMRPage from './pages/HMR'
+import HooksPage from './pages/Hooks'
 
 const routes = [
   { title: 'Progress Bar', component: ProgressBar, path: '/progress' },
@@ -23,6 +24,10 @@ const routes = [
     title: 'HMR',
     component: HMRPage,
     path: '/hmr'
+  },{
+    title: 'Hooks',
+    component: HooksPage,
+    path: '/hooks'
   }
 ]
 

@@ -36125,6 +36125,18 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function useTimeout(time, callback, deps) {
+  var timeoutId;
+  (0, _react.useEffect)(function () {
+    timeoutId = setTimeout(function () {
+      callback();
+    }, time);
+    return function () {
+      clearTimeout(timeoutId);
+    };
+  }, deps);
+}
+
 function HooksPage() {
   var _useState = (0, _react.useState)({
     num: 0
@@ -36140,13 +36152,14 @@ function HooksPage() {
 
   (0, _react.useEffect)(function () {
     console.log("use effect execute, num: ", num);
-  }, [count]);
+  }, [count]); // function handleAlertClick() {
+  // setTimeout(() => {
+  //   alert("You clicked on: " + count.num);
+  // }, 3000);
 
-  function handleAlertClick() {
-    setTimeout(function () {
-      alert("You clicked on: " + count.num);
-    }, 3000);
-  }
+  useTimeout(3000, function () {
+    alert('num: ' + num);
+  }, [num]); // }
 
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "this is hooks page"), _react.default.createElement("div", null, "count: ", count.num, _react.default.createElement("button", {
     style: {
@@ -36162,12 +36175,9 @@ function HooksPage() {
       marginLeft: 20
     },
     onClick: function onClick() {
-      count.num++;
       setNum(num + 1);
     }
-  }, "add")), _react.default.createElement("button", {
-    onClick: handleAlertClick
-  }, "show count after 3s"));
+  }, "add")), _react.default.createElement("button", null, "show count after 3s"));
 }
 
 var _default = HooksPage;
@@ -36381,7 +36391,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50469" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49955" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from "react";
 
+function useTimeout(time, callback, deps) {
+  let timeoutId;
+
+  useEffect(() => {
+    timeoutId = setTimeout(() => {
+      callback();
+    }, time);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, deps);
+}
+
 function HooksPage() {
   const [count, setCount] = useState({ num: 0 });
   const [num, setNum] = useState(0);
@@ -8,11 +22,14 @@ function HooksPage() {
     console.log("use effect execute, num: ", num);
   }, [count]);
 
-  function handleAlertClick() {
-    setTimeout(() => {
-      alert("You clicked on: " + count.num);
-    }, 3000);
-  }
+  // function handleAlertClick() {
+    // setTimeout(() => {
+    //   alert("You clicked on: " + count.num);
+    // }, 3000);
+    useTimeout(3000, () => {
+      alert('num: ' + num)
+    }, [num])
+  // }
 
   return (
     <div>
@@ -33,14 +50,13 @@ function HooksPage() {
         <button
           style={{ marginLeft: 20 }}
           onClick={() => {
-            count.num++;
             setNum(num + 1);
           }}
         >
           add
         </button>
       </div>
-      <button onClick={handleAlertClick}>show count after 3s</button>
+      <button >show count after 3s</button>
     </div>
   );
 }

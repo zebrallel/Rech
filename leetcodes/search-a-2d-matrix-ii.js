@@ -9,7 +9,6 @@ var searchMatrix = function (matrix, target) {
 
   while (matrix[x] && matrix[x][y] !== undefined) {
     var value = matrix[x][y];
-    console.log(value)
 
     if (value === target) {
       result = true;

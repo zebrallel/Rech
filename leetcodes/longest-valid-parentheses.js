@@ -1,28 +1,17 @@
 function main(s) {
     let longest = ''
-    let cur = ''
 
-    for (const i of s) {
-        cur += i
+    for (let i = 0; i < s.length; i++) {
+      for (let j = i + 1; j <= s.length; j++) {
+        const cur = s.substring(i, j)
 
-        if (isValid(cur)) {
-            if (cur.length > longest.length) {
-                longest = cur
-            }
-        } else {
-            cur = shiftFromHead(cur)
+        if (isValid(cur) && cur.length > longest.length) {
+          longest = cur
         }
+      }
     }
 
     return longest.length
-}
-
-function shiftFromHead(s) {
-    while (!isValid(s)) {
-        s = s.substring(1)
-    }
-
-    return s
 }
 
 function isValid(s) {
@@ -30,31 +19,25 @@ function isValid(s) {
         return true;
     }
 
-    const left = ["("];
-    const stack = [];
-    const right = {
-        ")": "(",
-    };
+    if (s[0] === ')') {
+      return false
+    }
+
+    let sum = 0;
 
     for (const i of s) {
-        if (left.includes(i)) {
-            stack.push(i);
+        if (i === '(') {
+          sum++
         } else {
-            const target = right[i];
-
-            if (target === stack.pop()) {
-                continue;
-            } else {
-                return false;
-            }
+          if (sum == 0) {
+            return false
+          }else{
+            sum--
+          }
         }
     }
 
-    if (stack.length === 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return sum === 0
 }
 
-console.log(main('(()'))
+console.log(main(")()())))))((())))((()))"))

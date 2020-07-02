@@ -36138,49 +36138,120 @@ function useTimeout(time, callback, deps) {
 }
 
 function HooksPage() {
-  var _useState = (0, _react.useState)({
-    num: 0
-  }),
+  var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       count = _useState2[0],
       setCount = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      num = _useState4[0],
-      setNum = _useState4[1];
-
   (0, _react.useEffect)(function () {
-    console.log("use effect execute, num: ", num);
-  }, [count]); // function handleAlertClick() {
-  // setTimeout(() => {
-  //   alert("You clicked on: " + count.num);
-  // }, 3000);
-
-  useTimeout(3000, function () {
-    alert('num: ' + num);
-  }, [num]); // }
-
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "this is hooks page"), _react.default.createElement("div", null, "count: ", count.num, _react.default.createElement("button", {
-    style: {
-      marginLeft: 20
-    },
+    setTimeout(function () {
+      console.log("You clicked ".concat(count, " times"));
+    }, 3000);
+  });
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "this is hooks page"), _react.default.createElement("p", null, "You clicked ", count, " times"), _react.default.createElement("button", {
     onClick: function onClick() {
-      setCount({
-        num: count.num + 1
-      });
+      return setCount(count + 1);
     }
-  }, "add")), _react.default.createElement("div", null, "num: ", num, _react.default.createElement("button", {
-    style: {
-      marginLeft: 20
-    },
-    onClick: function onClick() {
-      setNum(num + 1);
-    }
-  }, "add")), _react.default.createElement("button", null, "show count after 3s"));
+  }, "Click me"));
 }
 
 var _default = HooksPage;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/pages/Misc/misc.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Example =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Example, _Component);
+
+  function Example() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Example);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Example)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      count: 0
+    });
+
+    return _this;
+  }
+
+  _createClass(Example, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        console.log("You clicked ".concat(_this2.state.count, " times"));
+      }, 3000);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var count = this.state.count;
+      setTimeout(function () {
+        console.log("You clicked ".concat(count, " times"));
+      }, 3000);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react.default.createElement("div", null, _react.default.createElement("p", null, "You clicked ", this.state.count, " times"), _react.default.createElement("button", {
+        onClick: function onClick() {
+          return _this3.setState({
+            count: _this3.state.count + 1
+          });
+        }
+      }, "Click me"));
+    }
+  }]);
+
+  return Example;
+}(_react.Component);
+
+var _default = Example;
 exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"src/route.js":[function(require,module,exports) {
 "use strict";
@@ -36201,6 +36272,8 @@ var _CanvasImg = _interopRequireDefault(require("./pages/CanvasImg"));
 var _HMR = _interopRequireDefault(require("./pages/HMR"));
 
 var _Hooks = _interopRequireDefault(require("./pages/Hooks"));
+
+var _misc = _interopRequireDefault(require("./pages/Misc/misc"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36228,10 +36301,14 @@ var routes = [{
   title: 'Hooks',
   component: _Hooks.default,
   path: '/hooks'
+}, {
+  title: 'Misc',
+  component: _misc.default,
+  path: '/misc'
 }];
 var _default = routes;
 exports.default = _default;
-},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js","./pages/HMR":"src/pages/HMR/index.js","./pages/Hooks":"src/pages/Hooks/index.jsx"}],"src/index.js":[function(require,module,exports) {
+},{"./pages/ProgressBar":"src/pages/ProgressBar/index.jsx","./pages/RussellLogin":"src/pages/RussellLogin/index.jsx","./pages/PentagonDemo":"src/pages/PentagonDemo/index.js","./pages/CanvasImg":"src/pages/CanvasImg/index.js","./pages/HMR":"src/pages/HMR/index.js","./pages/Hooks":"src/pages/Hooks/index.jsx","./pages/Misc/misc":"src/pages/Misc/misc.jsx"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./index.css");
@@ -36391,7 +36468,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49955" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57289" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

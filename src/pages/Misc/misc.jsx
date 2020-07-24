@@ -1,33 +1,28 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import TabContainer from "./tab_container";
 
 class Example extends Component {
   state = {
-    count: 0
+    text: "hello",
   };
-  componentDidMount() {
-    setTimeout(() => {
-      console.log(`You clicked ${this.state.count} times`);
-    }, 3000);
-  }
-  componentDidUpdate() {
-    const { count } = this.state
-
-    setTimeout(() => {
-      console.log(`You clicked ${count} times`);
-    }, 3000);
-  }
+  obj = { dom: this.state.text };
   render() {
     return (
       <div>
-        <p>You clicked {this.state.count} times</p>
-        <button onClick={() => this.setState({
-          count: this.state.count + 1
-        })}>
+        <button
+          onClick={() => {
+            this.obj.dom = "world";
+            this.setState({
+              text: "world",
+            });
+          }}
+        >
           Click me
         </button>
+        <TabContainer widget={this.obj} />
       </div>
-    )
+    );
   }
 }
 
-export default Example
+export default Example;

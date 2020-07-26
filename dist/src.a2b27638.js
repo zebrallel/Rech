@@ -36179,51 +36179,138 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var TabContainer =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(TabContainer, _React$Component);
 
-  function TabContainer(props) {
+  function TabContainer() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, TabContainer);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(TabContainer).call(this, props));
-    _this.state = {
-      current: props.widget
-    };
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TabContainer)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      obj: {
+        num: 1
+      },
+      obj2: {
+        num: 100
+      },
+      str: 123
+    });
+
     return _this;
   }
 
   _createClass(TabContainer, [{
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(next) {
-      console.log(this.props.widget === next.widget);
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate() {
-      return true;
-    }
-  }, {
     key: "render",
     value: function render() {
-      console.log(this.state.current.dom);
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "TabContainer"), _react.default.createElement("div", null, this.state.current.dom));
+      var _this2 = this;
+
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "misc page"), _react.default.createElement(Comp, null), _react.default.createElement(PureComp, null), _react.default.createElement("button", {
+        onClick: function onClick() {
+          _this2.setState({});
+        }
+      }, "\u4FEE\u6539\u503C"), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("button", {
+        onClick: function onClick() {
+          _this2.setState({
+            obj2: {
+              num: 101
+            }
+          });
+        }
+      }, "\u4FEE\u6539\u5F15\u7528"), _react.default.createElement(PureComp2, {
+        obj2: this.state.obj2
+      }));
     }
   }]);
 
   return TabContainer;
 }(_react.default.Component);
+
+var PureComp =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(PureComp, _React$PureComponent);
+
+  function PureComp() {
+    _classCallCheck(this, PureComp);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PureComp).apply(this, arguments));
+  }
+
+  _createClass(PureComp, [{
+    key: "render",
+    value: function render() {
+      console.log("pure render!!!");
+      return _react.default.createElement("div", null, _react.default.createElement("h3", null, "pure component"), _react.default.createElement("div", null, "obj num: ", this.props.obj));
+    }
+  }]);
+
+  return PureComp;
+}(_react.default.PureComponent);
+
+var Comp =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(Comp, _React$Component2);
+
+  function Comp() {
+    _classCallCheck(this, Comp);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Comp).apply(this, arguments));
+  }
+
+  _createClass(Comp, [{
+    key: "render",
+    value: function render() {
+      console.log("comp render!!!");
+      return _react.default.createElement("div", null, _react.default.createElement("h3", null, "normal component"), _react.default.createElement("div", null, "obj num: ", this.props.obj));
+    }
+  }]);
+
+  return Comp;
+}(_react.default.Component);
+
+var PureComp2 =
+/*#__PURE__*/
+function (_React$PureComponent2) {
+  _inherits(PureComp2, _React$PureComponent2);
+
+  function PureComp2() {
+    _classCallCheck(this, PureComp2);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PureComp2).apply(this, arguments));
+  }
+
+  _createClass(PureComp2, [{
+    key: "render",
+    value: function render() {
+      console.log("pure2 render!!!");
+      return _react.default.createElement("div", null, _react.default.createElement("h3", null, "pure2 component"), _react.default.createElement("div", null, "obj2 num: ", this.props.obj2.num));
+    }
+  }]);
+
+  return PureComp2;
+}(_react.default.PureComponent);
 
 var _default = TabContainer;
 exports.default = _default;
@@ -36255,15 +36342,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Example =
 /*#__PURE__*/
@@ -36271,45 +36356,15 @@ function (_Component) {
   _inherits(Example, _Component);
 
   function Example() {
-    var _getPrototypeOf2;
-
-    var _this;
-
     _classCallCheck(this, Example);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Example)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      text: "hello"
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "obj", {
-      dom: _this.state.text
-    });
-
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
   }
 
   _createClass(Example, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      return _react.default.createElement("div", null, _react.default.createElement("button", {
-        onClick: function onClick() {
-          _this2.obj.dom = "world";
-
-          _this2.setState({
-            text: "world"
-          });
-        }
-      }, "Click me"), _react.default.createElement(_tab_container.default, {
-        widget: this.obj
-      }));
+      return _react.default.createElement("div", null, _react.default.createElement(_tab_container.default, null));
     }
   }]);
 
@@ -36533,7 +36588,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58119" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61364" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
